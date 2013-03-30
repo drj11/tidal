@@ -1,0 +1,70 @@
+in taskCD/TIRA.F in the routine FUSET (SET F and U), assignments
+to elements of the A and B arrays correspond to calculations of
+u and f. The A and B arrays are indexed by the index number of
+the constituent (see table in task2000.rtf). In these arrays, A
+corresponds to f (amplitude scale factor); B corresponds to u
+(phase additive factor), but is expressed in radians.
+Calculations of A and B can be compared with the list of
+constituents published by the IHO:
+
+http://www.iho.int/mtg_docs/com_wg/IHOTC/IHOTC_Misc/TWLWG_Constituent_list.pdf
+For example A(17) corresponds to 'f' for K1 which we can see
+from the IHO list is:
+
+    1.0060 + 0.1150 cos N – 0.0088 cos 2N + 0.0006 cos 3N
+
+NOAA published harmonic constants for their stations:
+
+http://tidesandcurrents.noaa.gov/data_menu.shtml?unit=0&shift=g&format=Apply+Change&stn=8443970+Boston%2C+MA&type=Harmonic+Constituents
+
+(37 constituents) These are listed in [NOAA1999] Table B, page
+15. There are 175 in total.
+
+The UK publish 4 constituents (the rest are secret):
+
+http://www.ntslf.org/tides/constants?port=Liverpool
+
+Gives notes on computing u and f (and is a list of constituents):
+http://www.iho.int/mtg_docs/com_wg/IHOTC/IHOTC_Misc/TWLWG_Constituent_list.pdf
+
+Google for XDO gives a .doc file that explains eXtended DOodson
+numbers.
+
+A canadian manual.
+ftp://canuck.seos.uvic.ca/docs/MFTides/heights.pdf
+
+
+
+If we are only interested in M2, S2, N2, O1, K1 (the top 5
+constituents at Boston) then:
+
+M2 u = -2.14 sin N (degrees)
+   f = 1.0007 – 0.0373 cos N + 0.0002 cos 2N
+
+S2 u = 0
+   f = 1
+
+N2 same as M2
+
+O1 u = 10.80 sin N – 1.34 sin 2N + 0.19 sin 3N (degrees)
+   f = 1.0176 + 0.1871 cos N – 0.0147 cos 2N
+
+K1 u = – 8.86 sin N + 0.68 sin 2N – 0.07 sin 3N (degrees)
+   f = 1.0060 + 0.1150 cos N – 0.0088 cos 2N + 0.0006 cos 3N
+
+M2 is TASK2000 constituent 31, O1 is 10, K1 is 17
+
+## Orbital elements. [PUGH1976] Table 4:2
+
+T = 0 on midnight at Greenwich meridian on 0/1 January 1900
+T is measured in units of a Julian century (36525 mean solar days)
+# Mean longitude of moon, degrees.
+s = 277.02 + 481267.89*T + 0.0011*T**2
+# Mean longitude of sun
+h = 280.19 + 36000.77*T + 0.0003*T**2
+# Longitude of lunar perigee
+p = 334.39 + 4069.04*T - 0.0103*T**2
+# Longitude of lunar ascending node
+N = 259.16 - 1934.14*T + 0.0021*T**2
+# Longitude of perihelion
+pp = 281.22 + 1.72*T + 0.0005*T**2
